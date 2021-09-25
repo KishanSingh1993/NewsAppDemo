@@ -1,5 +1,6 @@
 package com.project.newsapp.utils;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -19,6 +20,7 @@ public class Util {
 
     public static final String COUNTRY_PREF = "countryPref";
 
+    @SuppressLint("ObsoleteSdkInt")
     public static void setSystemBarColor(Activity act, @ColorRes int color) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = act.getWindow();
