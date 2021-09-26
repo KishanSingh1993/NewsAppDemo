@@ -28,6 +28,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.project.newsapp.R;
 import com.project.newsapp.adapters.AdapterListNews;
@@ -54,7 +55,9 @@ public class MainActivity extends AppCompatActivity implements LifecycleOwner, A
     @SuppressLint("NonConstantResourceId")
     @BindView(R.id.ivToolbarCountry)
     ImageView ivToolbarCountry;
-
+    @SuppressLint("NonConstantResourceId")
+    @BindView(R.id.swipeContainer)
+    SwipeRefreshLayout swipeContainer;
 
     MainActivity context;
     MainViewModel viewModel;
@@ -92,8 +95,23 @@ public class MainActivity extends AppCompatActivity implements LifecycleOwner, A
         viewModel = ViewModelProviders.of(context).get(MainViewModel.class);
         viewModel.getNewsLiveData().observe(context, newsListUpdateObserver);
         viewModel.setApiKey(getString(R.string.news_api_key));
-        viewModel.setCountryCode(pref.getString(Util.COUNTRY_PREF, "tr"));
+        viewModel.setCountryCode(pref.getString(Util.COUNTRY_PREF, "gb"));
 
+
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Remember to CLEAR OUT old items before appending in the new ones
+                adapterListNews.clear();
+                viewModel.getNewsLiveData().observe(context, newsListUpdateObserver);
+                viewModel.setApiKey(getString(R.string.news_api_key));
+                viewModel.setCountryCode(pref.getString(Util.COUNTRY_PREF, "gb"));
+                // ...the data has come back, add new items to your adapter...
+                adapterListNews.addAll(newsList);
+                // Now we call setRefreshing(false) to signal refresh has finished
+                swipeContainer.setRefreshing(false);
+            }
+        });
 
     }
 

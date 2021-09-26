@@ -1,5 +1,6 @@
 package com.project.newsapp.adapters;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -42,6 +43,18 @@ public class AdapterListNews extends RecyclerView.Adapter<AdapterListNews.NewsVi
 
     private News getItem(int position) {
         return items.get(position);
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void clear() {
+        items.clear();
+        notifyDataSetChanged();
+    }
+
+    // Add a list of items -- change to type used
+    public void addAll(List<News> list) {
+        items.addAll(list);
+        notifyDataSetChanged();
     }
 
     public class NewsViewHolder extends RecyclerView.ViewHolder {
