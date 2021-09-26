@@ -19,3 +19,7 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-keep class com.project.newsapp.model.** { *; }
+-keepattributes SourceFile, LineNumberTable
+-keepattributes *Annotation*, Signature, Exception
