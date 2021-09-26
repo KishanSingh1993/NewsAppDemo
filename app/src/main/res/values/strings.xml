@@ -13,4 +13,5 @@
     <string name="news_dialog_info">Go to Website for more details.</string>
     <string name="goto_website">Go to Website</string>
     <string name="search_in_everything">Search in everything…</string>
+    <string name="search">Search</string>
 </resources>

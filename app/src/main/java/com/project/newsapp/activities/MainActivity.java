@@ -1,5 +1,6 @@
 package com.project.newsapp.activities;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.SearchManager;
 import android.content.Context;
@@ -47,8 +48,10 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements LifecycleOwner, AdapterItemClickListener {
 
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
+    @SuppressLint("NonConstantResourceId")
     @BindView(R.id.ivToolbarCountry)
     ImageView ivToolbarCountry;
 

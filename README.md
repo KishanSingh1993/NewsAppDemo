@@ -72,7 +72,7 @@ You need to create a [News API](https://newsapi.org/) key and add it to the stri
 # License
 
 ```
-    Copyright (C) Achmad Qomarudin
+    Copyright (C) Kishan Singh
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
